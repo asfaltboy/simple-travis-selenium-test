@@ -11,5 +11,6 @@ before_install:
   - ./get_gecko.sh
   - export PATH=$PATH:$PWD/geckodriver
   - echo "Path is" $PATH
-install: pip install selenium
-script: python test.py
+install: pip install selenium pytest
+script: python -m pytest test.py
+after_script: cat geckodriver.log
