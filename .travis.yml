@@ -1,0 +1,15 @@
+language: python
+addons:
+  firefox: "latest-esr"
+cache: pip
+python:
+  - "3.8"
+env:
+  global:
+    - MOZ_HEADLESS=1
+before_install:
+  - ./get_gecko.sh
+  - export PATH=$PATH:$PWD/geckodriver
+  - echo "Path is" $PATH
+install: pip install selenium
+script: python test.py
